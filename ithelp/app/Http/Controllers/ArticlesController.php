@@ -10,4 +10,20 @@ class ArticlesController extends Controller
     {
         return view('articles/index');
     }
+
+    public function create()
+    {
+        return view('articles/create');
+    }
+
+    public function store(Request $request)
+    {
+        $content = $request->validate([
+            'title' => 'required',
+            'content' => 'required|min:10'
+         ]);
+
+         auth()->user()->articles()->create($content);
+         return redirect('/')->with('success', '文章新增成功!');
+    }
 }

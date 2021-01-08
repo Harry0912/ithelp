@@ -8,6 +8,11 @@
 </head>
 <body>
     <main css="m-4">
+        @if(session()->has('notice'))
+            <div class="bg-pink-300 px-3 py-2 rounded">
+                {{ session()->get('notice') }}
+            </div>
+        @endif
         @yield('main')
     </main>
 </body>
