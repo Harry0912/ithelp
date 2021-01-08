@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Article;
 
 class ArticlesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index');
+    }
+
     public function index()
     {
-        return view('articles/index');
+        $articles = Article::all();
+        return view('articles/index', ['articles' => $articles]);
     }
 
     public function create()

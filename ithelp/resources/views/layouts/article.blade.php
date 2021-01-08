@@ -8,9 +8,9 @@
 </head>
 <body>
     <main css="m-4">
-        @if(session()->has('notice'))
+        @if(session()->has('success'))
             <div class="bg-pink-300 px-3 py-2 rounded">
-                {{ session()->get('notice') }}
+                {{ session()->get('success') }}
             </div>
         @endif
         @yield('main')
