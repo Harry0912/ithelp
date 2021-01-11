@@ -9,15 +9,20 @@ class ArticlesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->except('index', 'show');
     }
 
     public function index()
     {
         // $articles = Article::all();
-        // $articles = Article::orderBy('id', 'desc')->get();
-        $articles = Article::paginate(2);
+        $articles = Article::orderBy('id', 'desc')->paginate(3);
         return view('articles/index', ['articles' => $articles]);
+    }
+
+    public function show($id)
+    {
+        $article = Article::find($id);
+        return view('articles/show', ['article' => $article]);
     }
 
     public function create()
