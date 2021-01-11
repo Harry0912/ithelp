@@ -15,6 +15,7 @@
         @endif
         @yield('main')
     </main>
+    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('bottom_js')
 </body>
-<script src="{{ asset('js/app.js') }}"></script>
 </html>
