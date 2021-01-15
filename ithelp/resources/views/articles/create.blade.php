@@ -13,18 +13,41 @@
         </div>
     @endif
 
-    <form action="{{ route('articles.store') }}" method="post">
+    <!-- <form action="{{ route('articles.store') }}" method="post"> -->
         @csrf
         <div class="field my-2">
             <label for="">標題 : </label>
-            <input type="text" value="{{ old('title') }}" name="title" class="border border-gray-300 p-2">
+            <input id="title" type="text" value="{{ old('title') }}" name="title" class="border border-gray-300 p-2">
         </div>
         <div class="field my-2">
             <label for="">內文 : </label>
-            <textarea name="content" cols="30" rows="10" class="border border-gray-300 p-2">{{ old('content') }}</textarea>
+            <textarea id="content" name="content" cols="30" rows="10" class="border border-gray-300 p-2">{{ old('content') }}</textarea>
         </div>
-        <div class="actions">
+        <!-- <div class="actions">
             <button type="submit" class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300">新增文章</button>
         </div>
-    </form>
+    </form> -->
+        <div>
+            <button onClick="store()">ajax</button>
+        </div>
 @endsection
+<script>
+    function store() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var title = $('#title').val();
+        var content = $('#content').val();
+        $.ajax({
+            type:'POST',
+            url:"{{ route('articles.store') }}",
+            data:'&title='+title+'&content='+content,
+            success:function() {
+                document.location.href="/";
+            }
+        });
+    }
+</script>
