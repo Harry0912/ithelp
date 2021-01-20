@@ -39,7 +39,7 @@ class ArticlesController extends Controller
         ]);
 
          auth()->user()->articles()->create($content);
-         return redirect('/')->with('success', '文章新增成功!');
+        //  return redirect('/')->with('success', '文章新增成功!');
     }
 
     public function edit($id)

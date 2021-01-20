@@ -12,9 +12,9 @@
             </ul>
         </div>
     @endif
-    <!-- <form action="{{ route('articles.update', $article) }}" method="post"> -->
+    <form action="{{ route('articles.update', $article) }}" method="post">
         @csrf
-        <!-- @method('patch') -->
+        @method('patch')
         <input id="userId" type="hidden" value="{{ $article->id }}">
         <div class="field my-2">
             <label for="">標題 : </label>
@@ -24,15 +24,15 @@
             <label for="">內文 : </label>
             <textarea name="content" cols="30" rows="10" class="border border-gray-300 p-2">{{ $article->content }}</textarea>
         </div>
-        <!-- <div class="actions">
+        <div class="actions">
             <button type="submit" class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300">更新文章</button>
         </div>
-    </form> -->
+    </form>
         <div>
-            <button onClick="update()">更新文章</button>
+            <!-- <button onClick="update()">更新文章</button> -->
         </div>
 @endsection
-<script>
+<!-- <script>
     function update() {
         $.ajaxSetup({
             headers: {
@@ -44,7 +44,7 @@
         var content = $('textarea[name="content"]').val();
         var id = $('#userId').val();
         $.ajax({
-            type:'HEAD',
+            type:'PATCH',
             url:"{{ route('articles.update', $article) }}",
             data:{title:title, content:content},
             success:function() {
@@ -52,4 +52,4 @@
             }
         });
     }
-</script>
+</script> -->

@@ -28,7 +28,7 @@
         </div>
     </form> -->
         <div>
-            <button onClick="store()">ajax</button>
+            <button onClick="store()">新增文章</button>
         </div>
 @endsection
 <script>
@@ -47,6 +47,7 @@
             data:'&title='+title+'&content='+content,
             success:function() {
                 document.location.href="/";
+                alert("文章新增成功!");
             }
         });
     }
