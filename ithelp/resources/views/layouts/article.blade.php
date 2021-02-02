@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <title>Harry 幫幫忙!</title>
 </head>
 <body>
@@ -16,7 +16,7 @@
         @endif
         @yield('main')
     </main>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     @yield('bottom_js')
 </body>
 </html>
